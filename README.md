@@ -1,3 +1,37 @@
+## shadow_robot (indigo) - 1.3.1-1
+
+The packages in the `shadow_robot` repository were released into the `indigo` distro by running `/usr/bin/bloom-release shadow_robot --track indigo --rosdistro indigo` on `Fri, 18 Jul 2014 19:16:15 -0000`
+
+These packages were released:
+- `shadow_robot`
+- `sr_description`
+- `sr_example`
+- `sr_gazebo_plugins`
+- `sr_hand`
+- `sr_hardware_interface`
+- `sr_mechanism_controllers`
+- `sr_mechanism_model`
+- `sr_moveit_config`
+- `sr_movements`
+- `sr_robot_msgs`
+- `sr_self_test`
+- `sr_standalone`
+- `sr_tactile_sensors`
+- `sr_utilities`
+
+Version of package(s) in repository `shadow_robot`:
+- rosdistro version: `null`
+- old version: `1.3.1-0`
+- new version: `1.3.1-1`
+
+Versions of tools used:
+- bloom version: `0.5.10`
+- catkin_pkg version: `0.2.3`
+- rosdep version: `0.10.28`
+- rosdistro version: `0.3.5`
+- vcstools version: `0.1.35`
+
+
 ## shadow_robot (indigo) - 1.3.1-0
 
 The packages in the `shadow_robot` repository were released into the `indigo` distro by running `/usr/bin/bloom-release shadow_robot --track indigo --rosdistro indigo --new-track` on `Fri, 18 Jul 2014 19:01:23 -0000`
