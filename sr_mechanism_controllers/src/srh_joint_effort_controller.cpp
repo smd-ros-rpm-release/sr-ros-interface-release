@@ -35,37 +35,26 @@
 
 #include <std_msgs/Float64.h>
 
-PLUGINLIB_EXPORT_CLASS( controller::SrhEffortJointController, pr2_controller_interface::Controller)
+PLUGINLIB_EXPORT_CLASS( controller::SrhEffortJointController, controller_interface::ControllerBase)
 
 using namespace std;
 
 namespace controller {
 
-  SrhEffortJointController::SrhEffortJointController()
-    : SrController()
-  {
-  }
-
-  SrhEffortJointController::~SrhEffortJointController()
-  {
-    sub_command_.shutdown();
-  }
-
-  bool SrhEffortJointController::init(pr2_mechanism_model::RobotState *robot, const std::string &joint_name)
+  bool SrhEffortJointController::init(ros_ethercat_model::RobotState *robot, const string &joint_name)
   {
     ROS_DEBUG(" --------- ");
     ROS_DEBUG_STREAM("Init: " << joint_name);
 
-    assert(robot);
+    ROS_ASSERT(robot);
     robot_ = robot;
-    last_time_ = robot->getTime();
 
     //joint 0s
-    if( joint_name.substr(3,1).compare("0") == 0)
+    if (joint_name[3] == '0')
     {
       has_j2 = true;
-      std::string j1 = joint_name.substr(0,3) + "1";
-      std::string j2 = joint_name.substr(0,3) + "2";
+      string j1 = joint_name.substr(0,3) + "1";
+      string j2 = joint_name.substr(0,3) + "2";
       ROS_DEBUG_STREAM("Joint 0: " << j1 << " " << j2);
 
       joint_state_ = robot_->getJointState(j1);
@@ -109,26 +98,26 @@ namespace controller {
     return true;
   }
 
-  bool SrhEffortJointController::init(pr2_mechanism_model::RobotState *robot, ros::NodeHandle &n)
+  bool SrhEffortJointController::init(ros_ethercat_model::RobotState *robot, ros::NodeHandle &n)
   {
-    assert(robot);
+    ROS_ASSERT(robot);
     node_ = n;
 
-    std::string joint_name;
+    string joint_name;
     if (!node_.getParam("joint", joint_name)) {
       ROS_ERROR("No joint given (namespace: %s)", node_.getNamespace().c_str());
       return false;
     }
 
     controller_state_publisher_.reset(
-      new realtime_tools::RealtimePublisher<pr2_controllers_msgs::JointControllerState>
+      new realtime_tools::RealtimePublisher<control_msgs::JointControllerState>
       (node_, "state", 1));
 
     return init(robot, joint_name);
   }
 
 
-  void SrhEffortJointController::starting()
+  void SrhEffortJointController::starting(const ros::Time& time)
   {
     command_ = 0.0;
     read_parameters();
@@ -165,7 +154,7 @@ namespace controller {
   {
   }
 
-  void SrhEffortJointController::update()
+  void SrhEffortJointController::update(const ros::Time& time, const ros::Duration& period)
   {
     if( !has_j2)
     {
@@ -173,10 +162,8 @@ namespace controller {
         return;
     }
 
-    assert(robot_ != NULL);
-    ros::Time time = robot_->getTime();
-    assert(joint_state_->joint_);
-    dt_= time - last_time_;
+    ROS_ASSERT(robot_ != NULL);
+    ROS_ASSERT(joint_state_->joint_);
 
     if (!initialized_)
     {
@@ -199,10 +186,7 @@ namespace controller {
     else
       commanded_effort += friction_compensator->friction_compensation( joint_state_->position_ , joint_state_->velocity_, int(commanded_effort), friction_deadband );
 
-    if( has_j2 )
-      joint_state_2->commanded_effort_ = commanded_effort;
-    else
-      joint_state_->commanded_effort_ = commanded_effort;
+    joint_state_->commanded_effort_ = commanded_effort;
 
     if(loop_count_ % 10 == 0)
     {
@@ -214,7 +198,7 @@ namespace controller {
         //TODO: compute the derivative of the effort.
         controller_state_publisher_->msg_.process_value_dot = -1.0;
         controller_state_publisher_->msg_.error = commanded_effort - joint_state_->measured_effort_;
-        controller_state_publisher_->msg_.time_step = dt_.toSec();
+        controller_state_publisher_->msg_.time_step = period.toSec();
         controller_state_publisher_->msg_.command = commanded_effort;
 
         double dummy;
@@ -227,8 +211,6 @@ namespace controller {
       }
     }
     loop_count_++;
-
-    last_time_ = time;
   }
 
   void SrhEffortJointController::read_parameters()
