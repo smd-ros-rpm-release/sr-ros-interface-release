@@ -1,3 +1,40 @@
+## shadow_robot (hydro) - 1.3.4-0
+
+The packages in the `shadow_robot` repository were released into the `hydro` distro by running `/usr/bin/bloom-release shadow_robot --track hydro --rosdistro hydro` on `Fri, 19 Sep 2014 11:08:32 -0000`
+
+These packages were released:
+- `shadow_robot`
+- `sr_description`
+- `sr_example`
+- `sr_gazebo_plugins`
+- `sr_hand`
+- `sr_hardware_interface`
+- `sr_kinematics`
+- `sr_mechanism_controllers`
+- `sr_mechanism_model`
+- `sr_moveit_config`
+- `sr_movements`
+- `sr_robot_msgs`
+- `sr_self_test`
+- `sr_standalone`
+- `sr_tactile_sensors`
+- `sr_utilities`
+
+Version of package(s) in repository `shadow_robot`:
+- upstream repository: https://github.com/shadow-robot/sr-ros-interface.git
+- release repository: https://github.com/shadow-robot/sr-ros-interface-release.git
+- rosdistro version: `1.3.0-6`
+- old version: `1.3.0-6`
+- new version: `1.3.4-0`
+
+Versions of tools used:
+- bloom version: `0.5.11`
+- catkin_pkg version: `0.2.4`
+- rosdep version: `0.10.30`
+- rosdistro version: `0.3.5`
+- vcstools version: `0.1.35`
+
+
 ## shadow_robot (indigo) - 1.3.2-0
 
 The packages in the `shadow_robot` repository were released into the `indigo` distro by running `/usr/bin/bloom-release shadow_robot --track indigo --rosdistro indigo` on `Mon, 21 Jul 2014 13:22:56 -0000`
