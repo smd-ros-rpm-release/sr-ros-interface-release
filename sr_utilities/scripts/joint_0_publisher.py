@@ -1,13 +1,15 @@
 #!/usr/bin/env python
+import roslib; roslib.load_manifest('sr_utilities')
 import rospy
 from sensor_msgs.msg import JointState
+import thread
 
 
 class Joint0Publisher:
     def __init__(self):
         rospy.init_node('joint_0_publisher', anonymous=True)
         self.subs_1 = rospy.Subscriber("joint_states", JointState, self.callback)
-        self.pub = rospy.Publisher("joint_0s/joint_states", JointState, queue_size=1)
+        self.pub = rospy.Publisher("joint_0s/joint_states", JointState)
         self.joint_state_msg = JointState()
 
         rospy.spin()

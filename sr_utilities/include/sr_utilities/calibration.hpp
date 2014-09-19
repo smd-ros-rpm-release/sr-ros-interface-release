@@ -70,6 +70,7 @@ namespace shadow_robot
   {
   public:
     JointCalibration(std::vector<joint_calibration::Point> calibration_table);
+    ~JointCalibration();
 
     /**
      * Computes the calibrated joint position from the ADC raw reading.

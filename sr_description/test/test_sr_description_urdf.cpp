@@ -74,10 +74,7 @@ int walker( char *result, int& test_result)
       if (dir_name.find(std::string(".urdf.xacro")) == dir_name.size()-11)
       {
         char pwd[MAXPATHLEN];
-        char *ret = NULL;
-        ret = getcwd( pwd, MAXPATHLEN );
-        if (!ret)
-          printf("Error reading .urdf.xacro from disk\n");
+        getcwd( pwd, MAXPATHLEN );
         printf("\n\ntesting: %s\n",(std::string(pwd)+"/robots/"+dir_name).c_str());
         printf("python `rospack find xacro`/xacro.py %s/robots/%s  > `rospack find sr_description`/test/tmp.urdf", pwd, dir_name.c_str() );
         runExternalProcess("python `rospack find xacro`/xacro.py", std::string(pwd)+"/robots/"+dir_name+" > `rospack find sr_description`/test/tmp.urdf" );

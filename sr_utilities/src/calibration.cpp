@@ -54,6 +54,9 @@ namespace shadow_robot
     std::sort(this->calibration_table_.begin(), this->calibration_table_.end(), joint_calibration::sort_growing_raw_operator);
   }
 
+  JointCalibration::~JointCalibration()
+  {}
+
   /**
    * Computes the calibrated joint position from the ADC raw reading.
    *

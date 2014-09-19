@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import roslib; roslib.load_manifest('sr_utilities')
 import rospy
 from sensor_msgs.msg import JointState
 from sr_utilities.srv import getJointState
@@ -16,13 +17,13 @@ class MergeMessages:
         self.subs_1 = rospy.Subscriber("/sh/joint_states", JointState, self.callback1)
         self.subs_2 = rospy.Subscriber("/sa/joint_states", JointState, self.callback2)
 	self.serv = rospy.Service('/getJointState', getJointState, self.getJointStateCB)
-
+        
         self.pub = rospy.Publisher("/joint_states", JointState)
 
         self.joint_state_msg = JointState()
         self.joint_state_msg_1 = JointState()
         self.joint_state_msg_2 = JointState()
-
+        
         self.mutex = thread.allocate_lock()
 
         r = rospy.Rate( RATE )
@@ -37,7 +38,7 @@ class MergeMessages:
     def callback2(self, data):
         self.msg_2_received = True
         self.joint_state_msg_2 = data
-
+        
     def publish(self):
         if self.msg_1_received == True and self.msg_2_received == True:
 	    self.joint_state_msg.header.stamp = rospy.Time.now()

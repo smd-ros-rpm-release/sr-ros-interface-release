@@ -92,6 +92,9 @@
   <transmission name="wrist_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="WRJ2"/>
     <joint name="WRJ2"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="palm">
     <inertial>
@@ -139,6 +142,9 @@
   <transmission name="palm_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="WRJ1"/>
     <joint name="WRJ1"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="ffknuckle">
     <inertial>
@@ -188,6 +194,9 @@
   <transmission name="ffknuckle_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="FFJ4"/>
     <joint name="FFJ4"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="ffproximal">
     <inertial>
@@ -236,6 +245,9 @@
   <transmission name="ffproximal_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="FFJ3"/>
     <joint name="FFJ3"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="ffmiddle">
     <inertial>
@@ -283,8 +295,11 @@
   </joint>
   <transmission name="ffmiddle_transmission" type="sr_mechanism_model/J0Transmission">
     <actuator name="FFJ0"/>
-    <joint name="FFJ1"/>
-    <joint name="FFJ2"/>
+    <joint1 name="FFJ1"/>
+    <joint2 name="FFJ2"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="ffdistal">
     <inertial>
@@ -393,6 +408,9 @@
   <transmission name="mfknuckle_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="MFJ4"/>
     <joint name="MFJ4"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="mfproximal">
     <inertial>
@@ -441,6 +459,9 @@
   <transmission name="mfproximal_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="MFJ3"/>
     <joint name="MFJ3"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="mfmiddle">
     <inertial>
@@ -488,8 +509,11 @@
   </joint>
   <transmission name="mfmiddle_transmission" type="sr_mechanism_model/J0Transmission">
     <actuator name="MFJ0"/>
-    <joint name="MFJ1"/>
-    <joint name="MFJ2"/>
+    <joint1 name="MFJ1"/>
+    <joint2 name="MFJ2"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="mfdistal">
     <inertial>
@@ -598,6 +622,9 @@
   <transmission name="rfknuckle_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="RFJ4"/>
     <joint name="RFJ4"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="rfproximal">
     <inertial>
@@ -646,6 +673,9 @@
   <transmission name="rfproximal_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="RFJ3"/>
     <joint name="RFJ3"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="rfmiddle">
     <inertial>
@@ -693,8 +723,11 @@
   </joint>
   <transmission name="rfmiddle_transmission" type="sr_mechanism_model/J0Transmission">
     <actuator name="RFJ0"/>
-    <joint name="RFJ1"/>
-    <joint name="RFJ2"/>
+    <joint1 name="RFJ1"/>
+    <joint2 name="RFJ2"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="rfdistal">
     <inertial>
@@ -801,6 +834,9 @@
   <transmission name="lfmetacarpal_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="LFJ5"/>
     <joint name="LFJ5"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="lfknuckle">
     <inertial>
@@ -850,6 +886,9 @@
   <transmission name="lfknuckle_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="LFJ4"/>
     <joint name="LFJ4"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="lfproximal">
     <inertial>
@@ -898,6 +937,9 @@
   <transmission name="lfproximal_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="LFJ3"/>
     <joint name="LFJ3"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="lfmiddle">
     <inertial>
@@ -945,8 +987,11 @@
   </joint>
   <transmission name="lfmiddle_transmission" type="sr_mechanism_model/J0Transmission">
     <actuator name="LFJ0"/>
-    <joint name="LFJ1"/>
-    <joint name="LFJ2"/>
+    <joint1 name="LFJ1"/>
+    <joint2 name="LFJ2"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="lfdistal">
     <inertial>
@@ -1055,6 +1100,9 @@
   <transmission name="thbase_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="THJ5"/>
     <joint name="THJ5"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="thproximal">
     <inertial>
@@ -1104,6 +1152,9 @@
   <transmission name="thproximal_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="THJ4"/>
     <joint name="THJ4"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="thhub">
     <inertial>
@@ -1153,6 +1204,9 @@
   <transmission name="thhub_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="THJ3"/>
     <joint name="THJ3"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="thmiddle">
     <inertial>
@@ -1202,6 +1256,9 @@
   <transmission name="thmiddle_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="THJ2"/>
     <joint name="THJ2"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
   <link name="thdistal">
     <inertial>
@@ -1269,5 +1326,8 @@
   <transmission name="thdistal_transmission" type="sr_mechanism_model/SimpleTransmission">
     <actuator name="THJ1"/>
     <joint name="THJ1"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+    <pulsesPerRevolution>90000</pulsesPerRevolution>
   </transmission>
 </robot>

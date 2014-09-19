@@ -28,49 +28,49 @@
 #define _SRH_FAKE_JOINT_CALIBRATION_CONTROLLER_
 
 #include "ros/node_handle.h"
-#include "ros_ethercat_model/robot_state.hpp"
-#include "velocity_controllers/joint_velocity_controller.h"
+#include "pr2_mechanism_model/robot.h"
+#include "robot_mechanism_controllers/joint_velocity_controller.h"
 #include "realtime_tools/realtime_publisher.h"
 #include "std_msgs/Empty.h"
-#include "controller_interface/controller.h"
-#include <boost/smart_ptr.hpp>
 
 
 namespace controller
 {
 
-  class SrhFakeJointCalibrationController : public controller_interface::Controller<ros_ethercat_model::RobotState>
+  class SrhFakeJointCalibrationController : public pr2_controller_interface::Controller
   {
   public:
     SrhFakeJointCalibrationController();
+    virtual ~SrhFakeJointCalibrationController();
 
-    virtual bool init(ros_ethercat_model::RobotState *robot, ros::NodeHandle &n);
+    virtual bool init(pr2_mechanism_model::RobotState *robot, ros::NodeHandle &n);
 
-    virtual void update(const ros::Time& time, const ros::Duration& period);
+    virtual void update();
 
-    bool calibrated() { return calibration_state_ == CALIBRATED; }
+    bool calibrated() { return state_ == CALIBRATED; }
     void beginCalibration()
     {
-      if (calibration_state_ == IS_INITIALIZED)
-        calibration_state_ = BEGINNING;
+      if (state_ == IS_INITIALIZED)
+        state_ = BEGINNING;
     }
 
   protected:
 
-    ros_ethercat_model::RobotState* robot_;
+    pr2_mechanism_model::RobotState* robot_;
     ros::NodeHandle node_;
     boost::scoped_ptr<realtime_tools::RealtimePublisher<std_msgs::Empty> > pub_calibrated_;
     ros::Time last_publish_time_;
 
     enum { IS_INITIALIZED, BEGINNING, MOVING_TO_LOW, MOVING_TO_HIGH, CALIBRATED };
-    int calibration_state_;
+    int state_;
     int countdown_;
 
     double search_velocity_, reference_position_;
     bool original_switch_state_;
 
-    ros_ethercat_model::Actuator *actuator_;
-    ros_ethercat_model::JointState *joint_;
+    pr2_hardware_interface::Actuator *actuator_;
+    pr2_mechanism_model::JointState *joint_;
+    boost::shared_ptr<pr2_mechanism_model::Transmission> transmission_;
 
     std::string joint_name_, actuator_name_;
 

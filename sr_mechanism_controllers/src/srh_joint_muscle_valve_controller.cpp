@@ -35,32 +35,39 @@
 
 #include <std_msgs/Float64.h>
 
-PLUGINLIB_EXPORT_CLASS( controller::SrhJointMuscleValveController, controller_interface::ControllerBase)
+PLUGINLIB_EXPORT_CLASS( controller::SrhJointMuscleValveController, pr2_controller_interface::Controller)
 
 using namespace std;
 
 namespace controller {
 
   SrhJointMuscleValveController::SrhJointMuscleValveController()
-    : cmd_valve_muscle_min_(-4),
+    : SrController(),
+      cmd_valve_muscle_min_(-4),
       cmd_valve_muscle_max_(4)
   {
   }
 
-  bool SrhJointMuscleValveController::init(ros_ethercat_model::RobotState *robot, const string &joint_name)
+  SrhJointMuscleValveController::~SrhJointMuscleValveController()
+  {
+    sub_command_.shutdown();
+  }
+
+  bool SrhJointMuscleValveController::init(pr2_mechanism_model::RobotState *robot, const std::string &joint_name)
   {
     ROS_DEBUG(" --------- ");
     ROS_DEBUG_STREAM("Init: " << joint_name);
 
-    ROS_ASSERT(robot);
+    assert(robot);
     robot_ = robot;
+    last_time_ = robot->getTime();
 
     //joint 0s
-    if (joint_name[3] == '0')
+    if( joint_name.substr(3,1).compare("0") == 0)
     {
       has_j2 = true;
-      string j1 = joint_name.substr(0,3) + "1";
-      string j2 = joint_name.substr(0,3) + "2";
+      std::string j1 = joint_name.substr(0,3) + "1";
+      std::string j2 = joint_name.substr(0,3) + "2";
       ROS_DEBUG_STREAM("Joint 0: " << j1 << " " << j2);
 
       joint_state_ = robot_->getJointState(j1);
@@ -105,12 +112,12 @@ namespace controller {
     return true;
   }
 
-  bool SrhJointMuscleValveController::init(ros_ethercat_model::RobotState *robot, ros::NodeHandle &n)
+  bool SrhJointMuscleValveController::init(pr2_mechanism_model::RobotState *robot, ros::NodeHandle &n)
   {
-    ROS_ASSERT(robot);
+    assert(robot);
     node_ = n;
 
-    string joint_name;
+    std::string joint_name;
     if (!node_.getParam("joint", joint_name)) {
       ROS_ERROR("No joint given (namespace: %s)", node_.getNamespace().c_str());
       return false;
@@ -124,7 +131,7 @@ namespace controller {
   }
 
 
-  void SrhJointMuscleValveController::starting(const ros::Time& time)
+  void SrhJointMuscleValveController::starting()
   {
     command_ = 0.0;
     read_parameters();
@@ -161,7 +168,7 @@ namespace controller {
   {
   }
 
-  void SrhJointMuscleValveController::update(const ros::Time& time, const ros::Duration& period)
+  void SrhJointMuscleValveController::update()
   {
     //The valve commands can have values between -4 and 4
     int8_t valve[2];
@@ -173,8 +180,10 @@ namespace controller {
 //        return;
 //    }
 
-    ROS_ASSERT(robot_ != NULL);
-    ROS_ASSERT(joint_state_->joint_);
+    assert(robot_ != NULL);
+    ros::Time time = robot_->getTime();
+    assert(joint_state_->joint_);
+    dt_= time - last_time_;
 
     if (!initialized_)
     {
@@ -189,8 +198,8 @@ namespace controller {
 
 
     //IGNORE the following  lines if we don't want to use the pressure sensors data
-    //We don't want to define a modified version of JointState, as that would imply using a modified version of robot_state.hpp, controller manager,
-    //ethercat_hardware and ros_etherCAT main loop
+    //We don't want to define a modified version of JointState, as that would imply using a modified version of robot.h, controller manager,
+    //ethercat_hardware and pr2_etherCAT main loop
     // So we heve encoded the two uint16 that contain the data from the muscle pressure sensors into the double measured_effort_. (We don't
     // have any measured effort in the muscle hand anyway).
     // Here we extract the pressure values from joint_state_->measured_effort_ and decode that back into uint16.
@@ -251,8 +260,8 @@ namespace controller {
 
     //************************************************
     // After doing any computation we consider, we encode the obtained valve commands into joint_state_->commanded_effort_
-    //We don't want to define a modified version of JointState, as that would imply using a modified version of robot_state.hpp, controller manager,
-    //ethercat_hardware and ros_etherCAT main loop
+    //We don't want to define a modified version of JointState, as that would imply using a modified version of robot.h, controller manager,
+    //ethercat_hardware and pr2_etherCAT main loop
     // So the controller encodes the two int8 (that are in fact int4) that contain the valve commands into the double commanded_effort_. (We don't
     // have any real commanded_effort_ in the muscle hand anyway).
 
@@ -297,12 +306,14 @@ namespace controller {
         controller_state_publisher_->msg_.packed_valve = joint_state_->commanded_effort_;
         controller_state_publisher_->msg_.muscle_pressure_0 = pressure_0;
         controller_state_publisher_->msg_.muscle_pressure_1 = pressure_1;
-        controller_state_publisher_->msg_.time_step = period.toSec();
+        controller_state_publisher_->msg_.time_step = dt_.toSec();
 
         controller_state_publisher_->unlockAndPublish();
       }
     }
     loop_count_++;
+
+    last_time_ = time;
   }
 
   void SrhJointMuscleValveController::read_parameters()
