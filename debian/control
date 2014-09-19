@@ -1,0 +1,12 @@
+Source: ros-hydro-sr-movements
+Section: misc
+Priority: extra
+Maintainer: Shadow Robot's software team <software@shadowrobot.com>
+Build-Depends: debhelper (>= 9.0.0), libmagick++-dev, ros-hydro-catkin, ros-hydro-pr2-controllers-msgs, ros-hydro-roscpp, ros-hydro-rostest, ros-hydro-sensor-msgs, ros-hydro-sr-hand, ros-hydro-sr-robot-msgs, ros-hydro-sr-utilities, ros-hydro-std-msgs
+Homepage: http://ros.org/wiki/sr_movements
+Standards-Version: 3.9.2
+
+Package: ros-hydro-sr-movements
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmagick++-dev, ros-hydro-pr2-controllers-msgs, ros-hydro-roscpp, ros-hydro-sensor-msgs, ros-hydro-sr-hand, ros-hydro-sr-robot-msgs, ros-hydro-sr-utilities, ros-hydro-std-msgs
+Description: Contains a node which can be used to take the hand through a series of movements (perfect for tuning controllers for example).
