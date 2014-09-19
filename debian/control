@@ -1,0 +1,12 @@
+Source: ros-hydro-sr-hand
+Section: misc
+Priority: extra
+Maintainer: Shadow Robot's software team <software@shadowrobot.com>
+Build-Depends: debhelper (>= 9.0.0), gazebo, libgtest-dev, ros-hydro-catkin, ros-hydro-diagnostic-msgs, ros-hydro-dynamic-reconfigure, ros-hydro-gazebo-msgs, ros-hydro-pr2-controllers-msgs, ros-hydro-pr2-mechanism-msgs, ros-hydro-roscpp, ros-hydro-roslib, ros-hydro-rospy, ros-hydro-rostest, ros-hydro-self-test, ros-hydro-sensor-msgs, ros-hydro-sr-robot-msgs, ros-hydro-sr-utilities, ros-hydro-std-msgs, ros-hydro-std-srvs, ros-hydro-urdf
+Homepage: http://www.shadowrobot.com
+Standards-Version: 3.9.2
+
+Package: ros-hydro-sr-hand
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, gazebo, ros-hydro-diagnostic-msgs, ros-hydro-dynamic-reconfigure, ros-hydro-gazebo-msgs, ros-hydro-gazebo-ros, ros-hydro-pr2-controllers-msgs, ros-hydro-pr2-mechanism-msgs, ros-hydro-robot-state-publisher, ros-hydro-roscpp, ros-hydro-roslib, ros-hydro-rospy, ros-hydro-self-test, ros-hydro-sensor-msgs, ros-hydro-sr-robot-msgs, ros-hydro-sr-utilities, ros-hydro-std-msgs, ros-hydro-std-srvs, ros-hydro-urdf
+Description: This is a ROS interface to the Shadow Robot's robotic hand. It contains both an interface to the real hand (communicating via a CAN interface) and a simulated version of the hand. It also contains an interface to Shadow Robot's muscle arm.
