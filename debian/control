@@ -1,0 +1,12 @@
+Source: ros-hydro-sr-self-test
+Section: misc
+Priority: extra
+Maintainer: Shadow Robot's software team <software@shadowrobot.com>
+Build-Depends: debhelper (>= 9.0.0), gnuplot, libgtest-dev, ros-hydro-catkin, ros-hydro-roscpp, ros-hydro-rostest, ros-hydro-self-test, ros-hydro-sr-hand, ros-hydro-sr-movements, ros-hydro-sr-robot-msgs
+Homepage: http://ros.org/wiki/sr_self_test
+Standards-Version: 3.9.2
+
+Package: ros-hydro-sr-self-test
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-roscpp, ros-hydro-self-test, ros-hydro-sr-hand, ros-hydro-sr-movements, ros-hydro-sr-robot-msgs
+Description: sr_self_test
