@@ -1,7 +1,0 @@
-ros-hydro-sr-moveit-config (1.3.4-0raring) raring; urgency=high
-
-  * First release of this package
-
- -- MoveIt Setup Assistant <assistant@moveit.ros.org>  Thu, 18 Sep 2014 23:00:00 -0000
-
-
