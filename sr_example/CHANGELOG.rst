@@ -2,6 +2,9 @@
 Changelog for package sr_example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.5 (2014-09-22)
+------------------
+
 1.3.4 (2014-09-19)
 ------------------
 * New demo using the new hand_commander
