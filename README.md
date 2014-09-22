@@ -1,3 +1,40 @@
+## shadow_robot (hydro) - 1.3.5-1
+
+The packages in the `shadow_robot` repository were released into the `hydro` distro by running `/usr/bin/bloom-release shadow_robot --track hydro --rosdistro hydro` on `Mon, 22 Sep 2014 12:32:04 -0000`
+
+These packages were released:
+- `shadow_robot`
+- `sr_description`
+- `sr_example`
+- `sr_gazebo_plugins`
+- `sr_hand`
+- `sr_hardware_interface`
+- `sr_kinematics`
+- `sr_mechanism_controllers`
+- `sr_mechanism_model`
+- `sr_moveit_config`
+- `sr_movements`
+- `sr_robot_msgs`
+- `sr_self_test`
+- `sr_standalone`
+- `sr_tactile_sensors`
+- `sr_utilities`
+
+Version of package(s) in repository `shadow_robot`:
+- upstream repository: https://github.com/shadow-robot/sr-ros-interface.git
+- release repository: https://github.com/shadow-robot/sr-ros-interface-release.git
+- rosdistro version: `1.3.4-0`
+- old version: `1.3.5-0`
+- new version: `1.3.5-1`
+
+Versions of tools used:
+- bloom version: `0.5.11`
+- catkin_pkg version: `0.2.4`
+- rosdep version: `0.10.30`
+- rosdistro version: `0.3.5`
+- vcstools version: `0.1.35`
+
+
 ## shadow_robot (hydro) - 1.3.5-0
 
 The packages in the `shadow_robot` repository were released into the `hydro` distro by running `/usr/bin/bloom-release shadow_robot --track hydro --rosdistro hydro` on `Mon, 22 Sep 2014 12:05:22 -0000`
