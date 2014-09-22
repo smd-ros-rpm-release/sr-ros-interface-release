@@ -1,0 +1,61 @@
+ros-hydro-shadow-robot (1.3.5-2raring) raring; urgency=high
+
+
+
+ -- Shadow Robot's software team <software@shadowrobot.com>  Sun, 21 Sep 2014 23:00:00 -0000
+
+ros-hydro-shadow-robot (1.3.4-2raring) raring; urgency=high
+
+  * Update package.xml
+
+ -- Shadow Robot's software team <software@shadowrobot.com>  Thu, 18 Sep 2014 23:00:00 -0000
+
+ros-hydro-shadow-robot (1.3.3-2raring) raring; urgency=high
+
+  * Non-existent version (used to avoid version number conflict with indigo).
+
+ -- Shadow Robot's software team <software@shadowrobot.com>  Thu, 18 Sep 2014 23:00:00 -0000
+
+ros-hydro-shadow-robot (1.3.2-2raring) raring; urgency=high
+
+  * Non-existent version (used to avoid version number conflict with indigo).
+
+ -- Shadow Robot's software team <software@shadowrobot.com>  Thu, 18 Sep 2014 23:00:00 -0000
+
+ros-hydro-shadow-robot (1.3.1-2raring) raring; urgency=high
+
+  * Non-existent version (used to avoid version number conflict with indigo).
+
+ -- Shadow Robot's software team <software@shadowrobot.com>  Thu, 18 Sep 2014 23:00:00 -0000
+
+ros-hydro-shadow-robot (1.3.0-2raring) raring; urgency=high
+
+  * first hydro release
+
+ -- Shadow Robot's software team <software@shadowrobot.com>  Tue, 11 Feb 2014 00:00:00 -0000
+
+ros-hydro-shadow-robot (1.2.0-2raring) raring; urgency=high
+
+  * Port to hydro with catkin
+
+ -- Shadow Robot's software team <software@shadowrobot.com>  Thu, 19 Dec 2013 00:00:00 -0000
+
+ros-hydro-shadow-robot (1.1.0-2raring) raring; urgency=high
+
+  * New organisation: the urdf and descriptions are regrouped in the new sr_description stack. Numerous bug fixes.
+
+ -- Shadow Robot's software team <software@shadowrobot.com>  Sun, 19 Aug 2012 23:00:00 -0000
+
+ros-hydro-shadow-robot (1.0.1-2raring) raring; urgency=high
+
+  * Resetting the controllers when restarting them (zeroing motor strain gauges)
+
+ -- Shadow Robot's software team <software@shadowrobot.com>  Sun, 19 Aug 2012 23:00:00 -0000
+
+ros-hydro-shadow-robot (1.0.0-2raring) raring; urgency=high
+
+  * Better mixed position velocity controllers, Hand with Biotacs model added, Reorganised the code in different stacks. Removed some packages from the shadow_robot stack to put them in either sr_contrib, sr_config, sr_teleop, sr_visualisation, sr_demo stacks. We're keeping only the core packages in this stack for easier release / maintenance.
+
+ -- Shadow Robot's software team <software@shadowrobot.com>  Wed, 08 Aug 2012 23:00:00 -0000
+
+
