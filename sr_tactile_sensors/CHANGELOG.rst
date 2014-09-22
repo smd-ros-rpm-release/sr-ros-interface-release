@@ -2,6 +2,11 @@
 Changelog for package sr_tactile_sensors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.5 (2014-09-22)
+------------------
+* gazebo dependency fix
+* Contributors: Toni Oliver
+
 1.3.4 (2014-09-19)
 ------------------
 * removing unused message - always compile for gazebo support

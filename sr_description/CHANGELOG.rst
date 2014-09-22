@@ -2,6 +2,9 @@
 Changelog for package sr_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.5 (2014-09-22)
+------------------
+
 1.3.4 (2014-09-19)
 ------------------
 * Add versions of the arm and hand models that include a simulated kinect.
